@@ -1,0 +1,24 @@
+{
+  "name": "i-say",
+  "version": "1.0.0",
+  "description": "server-side node.js application of an android application named Isay",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Y-wl",
+  "license": "MIT",
+  "dependencies": {
+    "blueimp-md5": "^1.1.1",
+    "body-parser": "^1.14.1",
+    "crypto": "0.0.3",
+    "csprng": "^0.1.1",
+    "express": "^4.13.3",
+    "http": "0.0.0",
+    "mongoose": "^4.1.11",
+    "morgan": "^1.6.1",
+    "nodemailer": "^1.8.0",
+    "querystring": "^0.2.0",
+    "request": "^2.65.0"
+  }
+}
