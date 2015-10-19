@@ -2,13 +2,13 @@
  * Created by Ywl on 2015/10/14.
  */
 
-var chgpwd = require('config/chgpwd');
-var register = require('config/register');
-var login = require('config/login');
-var logout = require('config/logout');
-var bindemail = require('config/bindemail');
-var profile = require('config/profile');
-var avatar = require('config/avatar');
+var chgpwd = require('../config/chgpwd');
+var register = require('../config/register');
+var login = require('../config/login');
+var logout = require('../config/logout');
+var bindemail = require('../config/bindemail');
+var profile = require('../config/profile');
+var avatar = require('../config/avatar');
 
 module.exports = function (app) {
 
@@ -102,6 +102,14 @@ module.exports = function (app) {
             res.json(found);
         });
     });
+
+    app.get('/api/profile', function(req, res){
+        var id = req.body.id;
+        profile.get(id, function(found) {
+            console.log(found);
+            res.json(found);
+        })
+    })
     
     app.post('/api/avatar', function (req, res) {
         var id = req.body.id,

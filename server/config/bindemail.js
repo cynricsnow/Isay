@@ -1,7 +1,7 @@
 /**
  * Created by Ywl on 2015/10/15.
  */
-var user = require('database/user_db');
+var user = require('../database/user_db');
 var md5 = require('blueimp-md5').md5;
 var request = require('request');
 

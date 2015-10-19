@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     nick_name:String,
     gender:Boolean,//true:male, false:female
     birthday:Date,
-    age:String, //由birthday决定
+    age:Number, //由birthday决定
     signature:String,
     job:String,
     education:String,

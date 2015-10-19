@@ -5,7 +5,7 @@
 var crypto = require('crypto');
 var rand = require('csprng');
 var mongoose = require('mongoose');
-var user = require('database/user_db');
+var user = require('../database/user_db');
 
 exports.register = function(phone, password, callback) {
     //加一个验证码验证

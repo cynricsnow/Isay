@@ -22,3 +22,4 @@ require('./routes/routes.js')(app);
 app.listen(port);
 
 console.log('The app is listening on port '+port);
+console.log(__dirname);
