@@ -8,14 +8,14 @@ var Schema = mongoose.Schema;
 
 var userSchema = mongoose.Schema({
     token:String,
-    status:Boolean,//µÇÂ¼×´Ì¬
+    status:Boolean,//ç™»å½•çŠ¶æ€
     phone:String,
-    email:String, //ÓÉÓÃ»§ºóĞøÑ¡Ôñ°ó¶¨
-    avatar:{ data: Buffer, contentType: String }, //ÓÃ»§Í·Ïñ
+    email:String, //ç”±ç”¨æˆ·åç»­é€‰æ‹©ç»‘å®š
+    avatar:{ data: Buffer, contentType: String }, //ç”¨æˆ·å¤´åƒ
     nick_name:String,
     gender:Boolean,//true:male, false:female
     birthday:Date,
-    age:Number, //ÓÉbirthday¾ö¶¨
+    age:Number, //ç”±birthdayå†³å®š
     signature:String,
     job:String,
     education:String,

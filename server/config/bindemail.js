@@ -11,7 +11,7 @@ exports.bindemail = function(id, email, callback){
             user.find({email: email}, function (err, users2) {
                 if(users2.length == 0){
                     users1[0].email = email;
-                    //¼ÓÈëÍ·Ïñ
+                    //åŠ å…¥å¤´åƒ
                     var email_hash = md5(email.trim().toLowerCase());
                     var avatar_url = 'http://www.gravatar.com/avatar/'+email_hash+'?s=200&r=pg&d=identicon';
                     request({
@@ -24,14 +24,14 @@ exports.bindemail = function(id, email, callback){
                             users1[0].img.contentType='image/png';
                         }
                     });
-                    callback({'response':"°ó¶¨ÓÊÏä³É¹¦", 'res':true})
+                    callback({'response':"ç»‘å®šé‚®ç®±æˆåŠŸ", 'res':true})
                 }
                 else{
-                    callback({'response':"Õâ¸öÓÊÏäÒÑ¾­±»°ó¶¨", 'res':false})
+                    callback({'response':"è¿™ä¸ªé‚®ç®±å·²ç»è¢«ç»‘å®š", 'res':false})
                 }
             });
         }else{
-            callback({'response':"Òì³£´íÎó£¬ÇëÍË³öÖØĞÂµÇÂ¼"});
+            callback({'response':"å¼‚å¸¸é”™è¯¯ï¼Œè¯·é€€å‡ºé‡æ–°ç™»å½•"});
         }
     });
 };

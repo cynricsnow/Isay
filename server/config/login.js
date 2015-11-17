@@ -2,10 +2,12 @@
  * Created by Ywl on 2015/10/14.
  */
 
+
 var crypto = require('crypto');
 var rand = require('csprng');
 var mongoose = require('mongoose');
 var user = require('../database/user_db');
+
 
 exports.login= function (phone, password, callback) {
     user.find({phone:phone}, function(err, users){
@@ -17,13 +19,13 @@ exports.login= function (phone, password, callback) {
             var your_hash_pwd=crypto.createHash('sha512').update(tmp_pwd).digest('hex');
             if(hashed_pwd==your_hash_pwd){
                 users[0].status=true;
-                callback({'response':"µÇÂ¼³É¹¦", 'res':true, 'token':id});
+                callback({'response':"ç™»å½•æˆåŠŸ", 'res':true, 'token':id});
             }else{
-                callback({'response':"ÃÜÂë´íÎó", 'res':false});
+                callback({'response':"å¯†ç é”™è¯¯", 'res':false});
             }
         }
         else{
-            callback({'response':"ÓÃ»§²»´æÔÚ", 'res':false});
+            callback({'response':"ç”¨æˆ·ä¸å­˜åœ¨", 'res':false});
         }
     });
 };

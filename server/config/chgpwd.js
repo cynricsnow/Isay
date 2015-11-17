@@ -10,7 +10,7 @@ var http = require('http');
 var querystring = require('querystring');
 
 
-//µÇÂ¼×´Ì¬¸ÄÃÜÂë
+//ç™»å½•çŠ¶æ€æ”¹å¯†ç 
 exports.chgpwd = function (id, old_pwd, new_pwd, callback) {
     var new_salt = rand(160, 36);
     var tmp_pwd1 = new_salt + new_pwd;
@@ -32,17 +32,17 @@ exports.chgpwd = function (id, old_pwd, new_pwd, callback) {
                         this_user.salt = new_salt;
                         this_user.save();
 
-                        callback({'response': "ÃÜÂëĞŞ¸Ä³É¹¦", 'res': true});
+                        callback({'response': "å¯†ç ä¿®æ”¹æˆåŠŸ", 'res': true});
                     });
                 } else {
-                    callback({'response': "ĞÂÃÜÂëÌ«Èõ£¬ÇëÖØÊÔ", 'res': false});
+                    callback({'response': "æ–°å¯†ç å¤ªå¼±ï¼Œè¯·é‡è¯•", 'res': false});
                 }
             } else {
-                callback({'response': "ÃÜÂë´íÎó", 'res': false});
+                callback({'response': "å¯†ç é”™è¯¯", 'res': false});
             }
         } else {
-            //µ±Ç°µÇÂ¼µÄÓÃ»§·şÎñÆ÷ÎŞ¼ÇÂ¼£¬ËùÒÔ´íÎó
-            callback({'response': "Òì³£´íÎó£¬ÇëÍË³öÖØĞÂµÇÂ¼", 'res': false});
+            //å½“å‰ç™»å½•çš„ç”¨æˆ·æœåŠ¡å™¨æ— è®°å½•ï¼Œæ‰€ä»¥é”™è¯¯
+            callback({'response': "å¼‚å¸¸é”™è¯¯ï¼Œè¯·é€€å‡ºé‡æ–°ç™»å½•", 'res': false});
         }
     });
 };
@@ -62,7 +62,7 @@ exports.rstpwd_init = function (phone, callback) {
                     uid:'a22UppfS6cm8',
                     pas:'ce3t7uep',
                     mob: phone,
-                    con:'¡¾Isay¡¿ÄúµÄÑéÖ¤ÂëÊÇ£º'+code+'1·ÖÖÓÄÚÓĞĞ§¡£Èç·ÇÄú±¾ÈË²Ù×÷£¬¿ÉºöÂÔ±¾ÏûÏ¢¡£',
+                    con:'ã€Isayã€‘æ‚¨çš„éªŒè¯ç æ˜¯ï¼š'+code+'1åˆ†é’Ÿå†…æœ‰æ•ˆã€‚å¦‚éæ‚¨æœ¬äººæ“ä½œï¼Œå¯å¿½ç•¥æœ¬æ¶ˆæ¯ã€‚',
                     type:'json'
                 };
                 var content = querystring.stringify(postData);
@@ -91,7 +91,7 @@ exports.rstpwd_init = function (phone, callback) {
                 req.end();
             });
         } else {
-            callback({'response': "ÓÃ»§²»´æÔÚ", 'res': false});
+            callback({'response': "ç”¨æˆ·ä¸å­˜åœ¨", 'res': false});
         }
     });
 };
@@ -113,17 +113,17 @@ exports.rstpwd_do = function (phone, code, new_pwd, callback) {
                         this_user.temp_str = "";
                         this_user.save();
 
-                        callback({'response': "ĞŞ¸ÄÃÜÂë³É¹¦", 'res': true});
-                        //Ö®ºóÌø×ªµ½µÇÂ¼½çÃæ£¬¿ÉÒÔÊ¹±íµ¥ÎªÌîĞ´ºÃµÄ×´Ì¬
+                        callback({'response': "ä¿®æ”¹å¯†ç æˆåŠŸ", 'res': true});
+                        //ä¹‹åè·³è½¬åˆ°ç™»å½•ç•Œé¢ï¼Œå¯ä»¥ä½¿è¡¨å•ä¸ºå¡«å†™å¥½çš„çŠ¶æ€
                     });
                 } else {
-                    callback({'response': "ĞÂÃÜÂëÌ«Èõ£¬ÇëÖØÊÔ", 'res': false});
+                    callback({'response': "æ–°å¯†ç å¤ªå¼±ï¼Œè¯·é‡è¯•", 'res': false});
                 }
             } else {
-                callback({'response': "ÑéÖ¤Âë´íÎó,ÇëÖØĞÂÊäÈë", 'res': false});
+                callback({'response': "éªŒè¯ç é”™è¯¯,è¯·é‡æ–°è¾“å…¥", 'res': false});
             }
         } else {
-            callback({'response': "ÓÃ»§²»´æÔÚ", 'res': true});
+            callback({'response': "ç”¨æˆ·ä¸å­˜åœ¨", 'res': true});
         }
     });
 };

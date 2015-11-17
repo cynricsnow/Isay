@@ -7,7 +7,7 @@ exports.logout= function (id, callback) {
     user.find({token: id}, function (err, users) {
         if (users.length != 0) {
             users[0].status=false;
-            callback({'response': "ÍË³ö³É¹¦", 'res': true});
+            callback({'response': "é€€å‡ºæˆåŠŸ", 'res': true});
         };
     })
 };

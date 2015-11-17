@@ -9,7 +9,7 @@ exports.set= function (id, data, contentType, callback) {
             users[0].avatar.data = data;
             users[0].contentType = contentType;
         } else {
-            callback({'response': "Òì³£´íÎó£¬ÇëÍË³öÖØĞÂµÇÂ¼"});
+            callback({'response': "å¼‚å¸¸é”™è¯¯ï¼Œè¯·é€€å‡ºé‡æ–°ç™»å½•"});
         }
     })
 };
@@ -17,9 +17,9 @@ exports.set= function (id, data, contentType, callback) {
 exports.get = function (id, callback) {
     user.find({token: id}, function (err, users) {
         if (users.length != 0) {
-            callback({'response': "³É¹¦", 'res':users[0].toJSON});
+            callback({'response': "æˆåŠŸ", 'res':users[0].toJSON});
         } else {
-            callback({'response': "Òì³£´íÎó£¬ÇëÍË³öÖØĞÂµÇÂ¼"});
+            callback({'response': "å¼‚å¸¸é”™è¯¯ï¼Œè¯·é€€å‡ºé‡æ–°ç™»å½•"});
         }
     })
 }
