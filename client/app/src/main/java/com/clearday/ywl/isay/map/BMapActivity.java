@@ -1,13 +1,11 @@
 package com.clearday.ywl.isay.map;
 
 import android.app.Activity;
-import android.graphics.Point;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ZoomControls;
 
@@ -20,9 +18,7 @@ import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.clearday.ywl.isay.R;
@@ -43,7 +39,7 @@ public class BMapActivity extends Activity {
     private LinkedList<LocationEntity> locationList = new LinkedList<LocationEntity>(); // 存放历史定位结果的链表，最大存放当前结果的前5次定位结果
     private Boolean isFirstLocation = true;
     private double currentLat, currentLng;
-
+    private OverlayOptions myCurrentOption;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -73,11 +69,12 @@ public class BMapActivity extends Activity {
                 // 设置当前地图中心
                 LatLng point = new LatLng(currentLat, currentLng);
                 mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(point));
+                mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(19));
             }
         });
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(15));
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(19));
         locService = ((LocationApplication) getApplication()).locationService;
         LocationClientOption mOption = locService.getDefaultLocationClientOption();
         mOption.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
@@ -85,6 +82,16 @@ public class BMapActivity extends Activity {
         locService.setLocationOption(mOption);
         locService.registerListener(listener);
         locService.start();
+
+        Intent intent = getIntent();
+        if(intent.getIntExtra("mode", 0) == 1){
+            double lat = intent.getDoubleExtra("lat",0);
+            double lng = intent.getDoubleExtra("lng", 0);
+            isFirstLocation = false;
+            // 设置当前地图中心
+            LatLng point = new LatLng(lat, lng);
+            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(point));
+        }
     }
 
     /***
@@ -175,9 +182,9 @@ public class BMapActivity extends Activity {
                     // 清除当前所有marker
                     mBaiduMap.clear();
                     // 构建MarkerOption，用于在地图上添加Marker
-                    OverlayOptions option = new MarkerOptions().position(point).icon(bitmap);
+                    myCurrentOption = new MarkerOptions().position(point).icon(bitmap);
                     // 在地图上添加Marker，并显示
-                    mBaiduMap.addOverlay(option);
+                    mBaiduMap.addOverlay(myCurrentOption);
                 }
             } catch (Exception e) {
                 // TODO: handle exception

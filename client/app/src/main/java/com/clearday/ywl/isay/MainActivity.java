@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, BMapActivity.class);
+                // mode 0: my location mode 1: watching location
+                //intent.putExtra("mode",0);
+                intent.putExtra("mode", 1);
+                intent.putExtra("lat", 31.2332);
+                intent.putExtra("lng", 87.2134);
                 MainActivity.this.startActivity(intent);
             }
         });
