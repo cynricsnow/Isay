@@ -22,6 +22,8 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.model.LatLng;
 import com.clearday.ywl.isay.adapter.OrderSpinnerAdapter;
 import com.clearday.ywl.isay.adapter.SectionsPagerAdapter;
 import com.clearday.ywl.isay.map.BMapActivity;
@@ -30,12 +32,19 @@ import com.clearday.ywl.isay.map.TestMapActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,Tab1Fragment.OnFragmentInteractionListener{
-    private int targetPosition = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, BMapActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -72,6 +81,7 @@ public class MainActivity extends AppCompatActivity
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                /*
                 if(positionOffset < 0.0000001 || positionOffset >0.9999999){
                     switch (position){
                         case 0:
@@ -90,6 +100,7 @@ public class MainActivity extends AppCompatActivity
                     fab.hide();
                 }
                 Log.i("...", "scrolled" + position+"offset"+positionOffset);
+                */
             }
 
             @Override
@@ -98,27 +109,30 @@ public class MainActivity extends AppCompatActivity
                     case 0:
                         spinner.setVisibility(View.GONE);
                         textView.setVisibility(View.VISIBLE);
+                        if(fab.getVisibility()==View.GONE) {
+                            fab.show();
+                        }
                         break;
                     case 1:
                         spinner.setVisibility(View.VISIBLE);
                         textView.setVisibility(View.GONE);
+                        if(fab.getVisibility()==View.VISIBLE){
+                            fab.hide();
+                        }
                         break;
                     case 2:
                         spinner.setVisibility(View.VISIBLE);
                         textView.setVisibility(View.GONE);
+                        if(fab.getVisibility()==View.VISIBLE){
+                            fab.hide();
+                        }
                         break;
                 }
-                targetPosition = position;
                 Log.i("...", "Selected" + position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                switch (state){
-                    case 0:Log.i("...", "state0");break;  //什么都没做
-                    case 1:Log.i("...", "state1");break; //正在滑动
-                    case 2:Log.i("...", "state2");break; //滑动结束
-                }
             }
         });
         tabs.setupWithViewPager(viewPager);

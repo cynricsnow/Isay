@@ -45,7 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom|end"
-        android:src="@mipmap/ic_add_white_24dp"
+        app:backgroundTint="@color/colorGreen500"
+        android:src="@mipmap/ic_place_white_24dp"
         app:layout_behavior="com.clearday.ywl.isay.animation.FABScrollBehavior"/>
 </android.support.design.widget.CoordinatorLayout>
 

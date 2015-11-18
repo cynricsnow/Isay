@@ -1,10 +1,15 @@
 package com.clearday.ywl.isay.map;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -37,6 +42,7 @@ public class BMapActivity extends Activity {
     private LocationService locService;
     private LinkedList<LocationEntity> locationList = new LinkedList<LocationEntity>(); // 存放历史定位结果的链表，最大存放当前结果的前5次定位结果
     private Boolean isFirstLocation = true;
+    private double currentLat, currentLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,31 @@ public class BMapActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         mMapView = (MapView) findViewById(R.id.bmapView);
+        // 隐藏缩放控件
+        int childCount = mMapView.getChildCount();
+        View zoom = null;
+        for (int i = 0; i < childCount; i++) {
+            View child = mMapView.getChildAt(i);
+            if (child instanceof ZoomControls) {
+                zoom = child;
+                break;
+            }
+        }
+        zoom.setVisibility(View.GONE);
+        // 隐藏指南针
+        //mUiSettings = mBaiduMap.getUiSettings();
+        //mUiSettings.setCompassEnabled(true);
+        // 删除百度地图logo
+        mMapView.removeViewAt(1);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.locationfab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 设置当前地图中心
+                LatLng point = new LatLng(currentLat, currentLng);
+                mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(point));
+            }
+        });
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(15));
@@ -135,7 +166,9 @@ public class BMapActivity extends Activity {
                 BDLocation location = msg.getData().getParcelable("loc");
                 int x = msg.getData().getInt("direction");
                 if (location != null) {
-                    LatLng point = new LatLng(location.getLatitude(), location.getLongitude());
+                    currentLat = location.getLatitude();
+                    currentLng = location.getLongitude();
+                    LatLng point = new LatLng(currentLat, currentLng);
                     // 构建Marker图标
                     BitmapDescriptor bitmap = null;
                     bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.ic_circle_blue); // 非推算结果
