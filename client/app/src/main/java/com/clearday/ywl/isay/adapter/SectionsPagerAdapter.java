@@ -11,7 +11,7 @@ import com.clearday.ywl.isay.Tab1Fragment;
  */
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-    private final String[] TITLES={"地图","周边","发现"};
+    private final String[] TITLES={"周边", "发现", "我的"};
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }

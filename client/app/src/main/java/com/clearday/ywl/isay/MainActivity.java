@@ -24,8 +24,8 @@ import android.widget.TextView;
 
 import com.clearday.ywl.isay.adapter.OrderSpinnerAdapter;
 import com.clearday.ywl.isay.adapter.SectionsPagerAdapter;
-
-import java.io.IOException;
+import com.clearday.ywl.isay.map.BMapActivity;
+import com.clearday.ywl.isay.map.TestMapActivity;
 
 
 public class MainActivity extends AppCompatActivity
@@ -169,12 +169,12 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         else if(id == R.id.action_search) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, TestMapActivity.class);
             MainActivity.this.startActivity(intent);
             return true;
         }
         else if(id == R.id.action_new) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, BMapActivity.class);
             MainActivity.this.startActivity(intent);
             return true;
         }

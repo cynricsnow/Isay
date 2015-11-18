@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.baidu.mapapi.map.MapView
     android:id="@+id/bmapView"
     android:layout_width="fill_parent"
