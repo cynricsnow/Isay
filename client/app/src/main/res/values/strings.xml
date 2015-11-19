@@ -39,10 +39,10 @@
             fgcolor="#FFFFFFFF">card_view:cardCornerRadius</font> attribute.
     </string>
 
-
+<string name="hello_blank_fragment">Hello blank fragment</string>
+<string name="title_activity_settings">Settings</string>
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_settings">Settings</string>
+ 
 
     <!-- Strings related to Settings -->
 
@@ -193,10 +193,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_theme">ThemeActivity</string>
-=======
     <string name="tocollect">收藏</string>
     <string name="tocomment">评论</string>
     <string name="topraise">点赞</string>
->>>>>>> origin/master
-
 </resources>
