@@ -1,13 +1,11 @@
 package com.clearday.ywl.isay;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -22,8 +20,6 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.model.LatLng;
 import com.clearday.ywl.isay.adapter.OrderSpinnerAdapter;
 import com.clearday.ywl.isay.adapter.SectionsPagerAdapter;
 import com.clearday.ywl.isay.map.BMapActivity;
@@ -112,22 +108,22 @@ public class MainActivity extends AppCompatActivity
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        spinner.setVisibility(View.GONE);
-                        textView.setVisibility(View.VISIBLE);
+                        spinner.setVisibility(View.VISIBLE);
+                        textView.setVisibility(View.GONE);
                         if(fab.getVisibility()==View.GONE) {
                             fab.show();
                         }
                         break;
                     case 1:
-                        spinner.setVisibility(View.VISIBLE);
-                        textView.setVisibility(View.GONE);
+                        spinner.setVisibility(View.GONE);
+                        textView.setVisibility(View.VISIBLE);
                         if(fab.getVisibility()==View.VISIBLE){
                             fab.hide();
                         }
                         break;
                     case 2:
-                        spinner.setVisibility(View.VISIBLE);
-                        textView.setVisibility(View.GONE);
+                        spinner.setVisibility(View.GONE);
+                        textView.setVisibility(View.VISIBLE);
                         if(fab.getVisibility()==View.VISIBLE){
                             fab.hide();
                         }
