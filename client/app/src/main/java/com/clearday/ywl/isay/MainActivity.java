@@ -1,12 +1,12 @@
 package com.clearday.ywl.isay;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.SharedElementCallback;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -15,19 +15,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.model.LatLng;
 import com.clearday.ywl.isay.adapter.OrderSpinnerAdapter;
 import com.clearday.ywl.isay.adapter.SectionsPagerAdapter;
 import com.clearday.ywl.isay.map.BMapActivity;
 import com.clearday.ywl.isay.map.TestMapActivity;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity
@@ -86,48 +89,28 @@ public class MainActivity extends AppCompatActivity
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                /*
-                if(positionOffset < 0.0000001 || positionOffset >0.9999999){
-                    switch (position){
-                        case 0:
-                            fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.colorRed500)));
-                            break;
-                        case 1:
-                            fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.colorIndigo500)));
-                            break;
-                        case 2:
-                            fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.colorCyan500)));
-                            break;
-                    }
-                    fab.show();
-                }
-                else {
-                    fab.hide();
-                }
-                Log.i("...", "scrolled" + position+"offset"+positionOffset);
-                */
             }
 
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        spinner.setVisibility(View.GONE);
-                        textView.setVisibility(View.VISIBLE);
+                        spinner.setVisibility(View.VISIBLE);
+                        textView.setVisibility(View.GONE);
                         if(fab.getVisibility()==View.GONE) {
                             fab.show();
                         }
                         break;
                     case 1:
-                        spinner.setVisibility(View.VISIBLE);
-                        textView.setVisibility(View.GONE);
+                        spinner.setVisibility(View.GONE);
+                        textView.setVisibility(View.VISIBLE);
                         if(fab.getVisibility()==View.VISIBLE){
                             fab.hide();
                         }
                         break;
                     case 2:
-                        spinner.setVisibility(View.VISIBLE);
-                        textView.setVisibility(View.GONE);
+                        spinner.setVisibility(View.GONE);
+                        textView.setVisibility(View.VISIBLE);
                         if(fab.getVisibility()==View.VISIBLE){
                             fab.hide();
                         }
@@ -149,6 +132,23 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        View headerView = LayoutInflater.from(this).inflate(R.layout.nav_header_main, navigationView, true);
+        CircleImageView circleImageView = (CircleImageView)headerView.findViewById(R.id.circleImageView);
+        if(circleImageView!=null){
+            circleImageView.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    MainActivity.this.startActivity(intent);
+                    Log.i("...", "Selected");
+                }
+            });
+        }
+        else{
+            Log.i("...", "not find");
+        }
+        TextView textView1 = (TextView)headerView.findViewById(R.id.ywl);
+        textView1.setText("asdaasafdf");
     }
 
     @Override
@@ -207,20 +207,32 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_theme) {
+            Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
+            MainActivity.this.startActivity(intent);
+        } else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            MainActivity.this.startActivity(intent);
+        }else if (id == R.id.nav_feedback) {
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto:610014042@qq.com"));
+            //emailIntent.setType("text/email");
+            //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"610014042@qq.com"});
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "意见反馈");
+            //Email.putExtra(Intent.EXTRA_TEXT, "Dear ...," + "");
+            startActivity(Intent.createChooser(emailIntent, "发送反馈"));
+        }else if (id == R.id.nav_share) {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            //shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+            shareIntent.setType("text/plain");
+            startActivity(shareIntent);
+        } else if (id == R.id.nav_update) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_aboout) {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            MainActivity.this.startActivity(intent);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

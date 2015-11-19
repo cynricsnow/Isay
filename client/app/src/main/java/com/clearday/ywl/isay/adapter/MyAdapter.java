@@ -1,10 +1,13 @@
 package com.clearday.ywl.isay.adapter;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clearday.ywl.isay.CircleImageView;
 import com.clearday.ywl.isay.R;
 
 /**
@@ -18,10 +21,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(TextView v) {
+        public View mView;
+        public CardView mCardView;
+        public CircleImageView mCircleImageView;
+        public TextView mVoiceName;
+        public TextView mVoiceDate;
+        public TextView mVoiceContent;
+        public ViewHolder(View v) {
             super(v);
-            mTextView = v;
+            mView = v;
+            mCardView = (CardView)v.findViewById(R.id.cardview);
+            mCircleImageView = (CircleImageView)v.findViewById(R.id.voice_circleImageView);
+            mVoiceName = (TextView)v.findViewById(R.id.voice_name);
+            mVoiceDate = (TextView)v.findViewById(R.id.voice_date);
+            mVoiceContent = (TextView)v.findViewById(R.id.cardtext);
         }
     }
 
@@ -32,10 +45,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        TextView v = (TextView)LayoutInflater.from(parent.getContext())
+        View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.array_item, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
@@ -48,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        //holder.mTextView.setText(mDataset[position]);
 
     }
 
