@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.clearday.ywl.isay.adapter.Tab1Adapter;
+import com.clearday.ywl.isay.adapter.Tab2Adapter;
 
 public class Tab2Fragment extends Fragment {
     private static final int DATASET_COUNT = 60;
     protected RecyclerView mRecyclerView;
-    protected Tab1Adapter mAdapter;
+    protected Tab2Adapter mAdapter;
     protected LinearLayoutManager mLayoutManager;
     protected String[] mDataset;
     protected SwipeRefreshLayout refresher;
@@ -49,7 +49,7 @@ public class Tab2Fragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new Tab1Adapter(mDataset);
+        mAdapter = new Tab2Adapter(getContext());
         mRecyclerView.setAdapter(mAdapter);
     }
 
