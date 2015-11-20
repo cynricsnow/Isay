@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ public class Tab1Fragment extends Fragment {
     protected MyAdapter mAdapter;
     protected LinearLayoutManager mLayoutManager;
     protected String[] mDataset;
+    protected SwipeRefreshLayout refresher;
 
     public static Tab1Fragment newInstance() {
         Tab1Fragment fragment = new Tab1Fragment();
@@ -42,6 +44,14 @@ public class Tab1Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         setupRecyclerView();
+        refresher = (SwipeRefreshLayout)rootView.findViewById(R.id.refresher);
+        refresher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresher.setRefreshing(true);
+                //refresher.setRefreshing(false);
+            }
+        });
         //FloatingActionButton fab=(FloatingActionButton)rootView.findViewById(R.id.fab);
         return  rootView;
     }

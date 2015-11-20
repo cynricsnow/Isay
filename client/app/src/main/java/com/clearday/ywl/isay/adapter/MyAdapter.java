@@ -1,5 +1,7 @@
 package com.clearday.ywl.isay.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clearday.ywl.isay.AboutActivity;
 import com.clearday.ywl.isay.CircleImageView;
 import com.clearday.ywl.isay.R;
 
@@ -61,6 +64,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //holder.mTextView.setText(mDataset[position]);
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, AboutActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
