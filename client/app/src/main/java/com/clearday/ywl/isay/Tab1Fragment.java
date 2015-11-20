@@ -11,14 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.clearday.ywl.isay.adapter.MyAdapter;
+import com.clearday.ywl.isay.adapter.Tab1Adapter;
 
 public class Tab1Fragment extends Fragment {
     private static final int DATASET_COUNT = 60;
 
     private OnFragmentInteractionListener mListener;
     protected RecyclerView mRecyclerView;
-    protected MyAdapter mAdapter;
+    protected Tab1Adapter mAdapter;
     protected LinearLayoutManager mLayoutManager;
     protected String[] mDataset;
     protected SwipeRefreshLayout refresher;
@@ -41,7 +41,7 @@ public class Tab1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         setupRecyclerView();
         refresher = (SwipeRefreshLayout)rootView.findViewById(R.id.refresher);
@@ -60,7 +60,7 @@ public class Tab1Fragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyAdapter(mDataset);
+        mAdapter = new Tab1Adapter(mDataset);
         mRecyclerView.setAdapter(mAdapter);
     }
 
