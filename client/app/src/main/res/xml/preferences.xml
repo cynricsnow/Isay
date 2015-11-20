@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="pref_key_notification_settings"
+        android:title="@string/pref_title_notifications">
+        <SwitchPreference
+            android:key="notifications_new_message"
+            android:title="@string/pref_new_message_notifications"
+            android:defaultValue="true" />
+
+        <RingtonePreference
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_ringtone"
+            android:title="@string/pref_ringtone"
+            android:ringtoneType="notification"
+            android:defaultValue="content://settings/system/notification_sound" />
+
+        <SwitchPreference
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_vibrate"
+            android:title="@string/pref_vibrate"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_key_privacy_settings"
+        android:title="@string/pref_title_privacy_security">
+        <PreferenceScreen
+            android:key="pref_key_account"
+            android:title="@string/pref_account">
+            <intent
+                android:targetClass="com.clearday.ywl.isay.AccountActivity"
+                android:targetPackage="com.clearday.ywl.isay"/>
+            <!--
+            <ListPreference
+                android:key="sync_frequency"
+                android:title="@string/pref_title_sync_frequency"
+                android:entries="@array/pref_sync_frequency_titles"
+                android:entryValues="@array/pref_sync_frequency_values"
+                android:defaultValue="180"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null" />
+
+
+            <Preference android:title="@string/pref_title_system_sync_settings">
+                <intent android:action="android.settings.SYNC_SETTINGS" />
+
+            </Preference>  -->
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="pref_key_privacy"
+            android:title="@string/pref_privacy">
+            <!--
+            <SwitchPreference
+                android:key="example_switch"
+                android:title="@string/pref_title_social_recommendations"
+                android:summary="@string/pref_description_social_recommendations"
+                android:defaultValue="true" />
+
+            <EditTextPreference
+                android:key="example_text"
+                android:title="@string/pref_title_display_name"
+                android:defaultValue="@string/pref_default_display_name"
+                android:selectAllOnFocus="true"
+                android:inputType="textCapWords"
+                android:capitalize="words"
+                android:singleLine="true"
+                android:maxLines="1" />
+
+           <ListPreference
+                android:key="example_list"
+                android:title="@string/pref_title_add_friends_to_messages"
+                android:defaultValue="-1"
+                android:entries="@array/pref_example_list_titles"
+                android:entryValues="@array/pref_example_list_values"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null" /> -->
+            <intent
+                android:targetClass="com.clearday.ywl.isay.PrivacyActivity"
+                android:targetPackage="com.clearday.ywl.isay"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pref_key_general_settings"
+        android:title="@string/pref_title_general">
+        <ListPreference
+            android:key="pref_key_theme"
+            android:title="@string/pref_theme"
+            android:entries="@array/pref_sync_frequency_titles"
+            android:entryValues="@array/pref_sync_frequency_values"
+            android:defaultValue="180"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null">
+
+        </ListPreference>
+        <PreferenceScreen
+            android:key="pref_key_cache"
+            android:title="@string/pref_cache">
+
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>
