@@ -78,11 +78,19 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ThemeActivity"
-            android:label="@string/title_activity_theme"
+            android:name=".PrivacyActivity"
+            android:label="@string/title_activity_privacy"
+            android:parentActivityName=".SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".AccountActivity"
+            android:label="@string/title_activity_account"
+            android:parentActivityName=".SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

@@ -33,7 +33,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,Tab1Fragment.OnFragmentInteractionListener{
-
+    private DrawerLayout drawer;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +82,7 @@ public class MainActivity extends AppCompatActivity
         spinner.setVisibility(View.GONE);
         final TextView textView = (TextView)findViewById(R.id.appname);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
-
+        viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(sectionsPagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -95,21 +95,21 @@ public class MainActivity extends AppCompatActivity
                     case 0:
                         spinner.setVisibility(View.VISIBLE);
                         textView.setVisibility(View.GONE);
-                        if(fab.getVisibility()==View.GONE) {
+                        if (fab.getVisibility() == View.GONE) {
                             fab.show();
                         }
                         break;
                     case 1:
                         spinner.setVisibility(View.GONE);
                         textView.setVisibility(View.VISIBLE);
-                        if(fab.getVisibility()==View.VISIBLE){
+                        if (fab.getVisibility() == View.VISIBLE) {
                             fab.hide();
                         }
                         break;
                     case 2:
                         spinner.setVisibility(View.GONE);
                         textView.setVisibility(View.VISIBLE);
-                        if(fab.getVisibility()==View.VISIBLE){
+                        if (fab.getVisibility() == View.VISIBLE) {
                             fab.hide();
                         }
                         break;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
         tabs.setupWithViewPager(viewPager);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -204,11 +204,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_theme) {
-            Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
-            MainActivity.this.startActivity(intent);
-        } else if (id == R.id.nav_settings) {
+        if (id == R.id.nav_neighbor) {
+            drawer.closeDrawers();
+            viewPager.setCurrentItem(0, true);
+        }
+        else if (id == R.id.nav_explore) {
+            drawer.closeDrawers();
+            viewPager.setCurrentItem(1, true);
+        }
+        else if (id == R.id.nav_mine) {
+            drawer.closeDrawers();
+            viewPager.setCurrentItem(2, true);
+        }
+        else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             MainActivity.this.startActivity(intent);
         }else if (id == R.id.nav_feedback) {
