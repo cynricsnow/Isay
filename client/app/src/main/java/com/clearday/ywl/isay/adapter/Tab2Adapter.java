@@ -1,14 +1,16 @@
 package com.clearday.ywl.isay.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.clearday.ywl.isay.PictureActivity;
 import com.clearday.ywl.isay.R;
+import com.clearday.ywl.isay.RatioImageView;
 
 /**
  * Created by Ywl on 2025/20/28.
@@ -75,11 +77,11 @@ public class Tab2Adapter extends RecyclerView.Adapter<Tab2Adapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public View mView;
-        public ImageView mImageView;
+        public RatioImageView mRatioImageView;
         public ViewHolder(View v) {
             super(v);
             mView = v;
-            mImageView = (ImageView)v.findViewById(R.id.picture);
+            mRatioImageView = (RatioImageView)v.findViewById(R.id.picture);
         }
     }
 
@@ -102,11 +104,23 @@ public class Tab2Adapter extends RecyclerView.Adapter<Tab2Adapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //holder.mTextView.setText(mDataset[position]);
-       Glide.with(mContext).load(imageUrls[position]).into(holder.mImageView);
+       Glide.with(mContext).load(imageUrls[position]).into(viewHolder.mRatioImageView).getSize((width, height) -> {
+           if (!viewHolder.mView.isShown()) {
+               viewHolder.mView.setVisibility(View.VISIBLE);
+           }
+       });
+        viewHolder.mRatioImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = PictureActivity.newIntent(v.getContext(), imageUrls[position], "发现");
+                context.startActivity(intent);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

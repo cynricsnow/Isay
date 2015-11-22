@@ -3,12 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="2dp"
+    android:background="#e0e0e0"
     android:foreground="?selectableItemBackground">
 
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
         android:layout_height="wrap_content"
-        android:src="@drawable/avatar80px"/>
+        android:layout_width="match_parent"
+        android:layout_margin="8dp">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.clearday.ywl.isay.RatioImageView
+            android:id="@+id/picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/avatar80px"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/picture"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/avatar80px"/>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To see a world in a grain of sand,\n一粒沙里阅世界\nAnd a heaven in a wild flower,\n一朵花中觅天堂\nHold infinity in the palm of your hand,\n无穷尽在掌心中\nAnd eternity in an hour.\n永恒不过一刻钟 "
+            android:layout_margin="8dp" />
+
+    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 </FrameLayout>

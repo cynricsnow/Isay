@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".map.LocationApplication"
@@ -91,6 +92,10 @@
             android:name=".AccountActivity"
             android:label="@string/title_activity_account"
             android:parentActivityName=".SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".PictureActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
