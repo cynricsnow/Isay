@@ -23,10 +23,10 @@ public class Tab1Fragment extends Fragment {
     protected String[] mDataset;
     protected SwipeRefreshLayout refresher;
 
-    public static Tab1Fragment newInstance() {
-        Tab1Fragment fragment = new Tab1Fragment();
-        return fragment;
-    }
+//    public static Tab1Fragment newInstance() {
+//        Tab1Fragment fragment = new Tab1Fragment();
+//        return fragment;
+//    }
 
     public Tab1Fragment() {}
 
@@ -71,16 +71,16 @@ public class Tab1Fragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        try {
+//            mListener = (OnFragmentInteractionListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {

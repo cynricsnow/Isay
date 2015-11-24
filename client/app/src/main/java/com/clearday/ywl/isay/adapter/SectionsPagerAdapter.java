@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.clearday.ywl.isay.Tab1Fragment;
 import com.clearday.ywl.isay.Tab2Fragment;
-
+import com.clearday.ywl.isay.Tab3Fragment;
 /**
  * Created by Ywl on 2015/10/29.
  */
@@ -25,7 +25,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new Tab2Fragment();
             case 2:
-                return new Tab1Fragment();
+                return new Tab3Fragment();
             default:
                 return new Tab1Fragment();
         }

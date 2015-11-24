@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity
                         }
                         break;
                 }
-                Log.i("...", "Selected" + position);
+                //Log.i("...", "Selected" + position);
             }
 
             @Override
@@ -138,12 +138,12 @@ public class MainActivity extends AppCompatActivity
                 public void onClick(View v){
                     Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                     MainActivity.this.startActivity(intent);
-                    Log.i("...", "Selected");
+                    //Log.i("...", "Selected");
                 }
             });
         }
         else{
-            Log.i("...", "not find");
+            //Log.i("...", "not find");
         }
         TextView textView1 = (TextView)headerView.findViewById(R.id.ywl);
         textView1.setText("asdaasafdf");

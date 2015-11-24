@@ -4,6 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="txt_black">#232323</color>
+    <color name="txt_gray">#565656</color>
+    <color name="txt_light_gray">#898989</color>
+    <color name="txt_at_blue">#507daf</color>
+    <color name="divider_gray">#d7d7d7</color>
+    <color name="bg_agray">#49dddddd</color>
+    <color name="bg_gray_pressed">#e8e8e8</color>
+
+
     <color name="colorRed500">#F44336</color>
     <color name="colorPink500">#E91E63</color>
     <color name="colorPurple500">#9C27B0</color>

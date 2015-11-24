@@ -1,11 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/recyclerView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_gray_pressed"
+    android:orientation="vertical"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-</android.support.v7.widget.RecyclerView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <include layout="@layout/include_status_avatar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <include
+        android:id="@+id/include_personal_info"
+        layout="@layout/include_personal_info" />
+
+    <ListView
+        android:id="@+id/my_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
