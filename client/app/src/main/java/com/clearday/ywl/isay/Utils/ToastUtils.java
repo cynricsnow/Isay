@@ -6,11 +6,21 @@ import android.widget.Toast;
 public class ToastUtils {
 
     public static Context sContext;
+    private static Toast mToast;
 
 
     private ToastUtils() {
     }
 
+    public static void showToast(Context context, CharSequence text, int duration) {
+        if(mToast == null) {
+            mToast = Toast.makeText(context, text, duration);
+        } else {
+            mToast.setText(text);
+            mToast.setDuration(duration);
+        }
+        mToast.show();
+    }
 
     public static void register(Context context) {
         sContext = context;

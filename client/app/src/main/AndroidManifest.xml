@@ -98,6 +98,11 @@
             android:name=".PictureActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".NewIsayActivity"
+            android:label="@string/title_activity_newIsay"
+            android:parentActivityName=".MainActivity" >
+        </activity>
     </application>
 
 </manifest>

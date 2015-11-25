@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         else if(id == R.id.action_new) {
-            Intent intent = new Intent(MainActivity.this, BMapActivity.class);
+            Intent intent = new Intent(MainActivity.this, NewIsayActivity.class);
             MainActivity.this.startActivity(intent);
             return true;
         }

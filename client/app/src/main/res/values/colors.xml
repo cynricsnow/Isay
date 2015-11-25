@@ -11,6 +11,8 @@
     <color name="divider_gray">#d7d7d7</color>
     <color name="bg_agray">#49dddddd</color>
     <color name="bg_gray_pressed">#e8e8e8</color>
+    <color name="transparent">#00000000</color>
+    <color name="padding_color">#efeeee</color>
 
 
     <color name="colorRed500">#F44336</color>
