@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clearday.ywl.isay.AboutActivity;
@@ -29,7 +30,15 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.ViewHolder> {
         public CircleImageView mCircleImageView;
         public TextView mVoiceName;
         public TextView mVoiceDate;
-        public TextView mVoiceContent;
+        public TextView mVoiceText;
+        public LinearLayout mVoiceContent;
+        public LinearLayout mFavorites;
+        public LinearLayout mComments;
+        public LinearLayout mLikes;
+        public TextView mFavoritesCount;
+        public TextView mCommentsCount;
+        public TextView mLikesCount;
+
         public ViewHolder(View v) {
             super(v);
             mView = v;
@@ -37,7 +46,14 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.ViewHolder> {
             mCircleImageView = (CircleImageView)v.findViewById(R.id.voice_circleImageView);
             mVoiceName = (TextView)v.findViewById(R.id.voice_name);
             mVoiceDate = (TextView)v.findViewById(R.id.voice_date);
-            mVoiceContent = (TextView)v.findViewById(R.id.cardtext);
+            mVoiceText = (TextView)v.findViewById(R.id.voice_text);
+            mVoiceContent = (LinearLayout)v.findViewById(R.id.voice_content);
+            mFavorites = (LinearLayout)v.findViewById(R.id.favorites);
+            mComments = (LinearLayout)v.findViewById(R.id.comments);
+            mLikes = (LinearLayout)v.findViewById(R.id.likes);
+            mFavoritesCount = (TextView)v.findViewById(R.id.favorites_count);
+            mCommentsCount = (TextView)v.findViewById(R.id.comments_count);
+            mLikesCount = (TextView)v.findViewById(R.id.likes_count);
         }
     }
 
@@ -64,7 +80,7 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //holder.mTextView.setText(mDataset[position]);
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+        holder.mVoiceContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
@@ -73,6 +89,29 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.ViewHolder> {
             }
         });
 
+        holder.mFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 15/11/25
+                holder.mFavoritesCount.setText(Integer.parseInt(holder.mFavoritesCount.getText().toString()) + 1 + "");
+            }
+        });
+
+        holder.mComments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 15/11/25
+                holder.mCommentsCount.setText(Integer.parseInt(holder.mCommentsCount.getText().toString())+1+"");
+            }
+        });
+
+        holder.mLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 15/11/25
+                holder.mLikesCount.setText(Integer.parseInt(holder.mLikesCount.getText().toString())+1+"");
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
