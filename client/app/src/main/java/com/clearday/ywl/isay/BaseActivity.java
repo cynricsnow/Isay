@@ -6,7 +6,12 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.LruCache;
+import android.view.View;
 
 import com.clearday.ywl.isay.Utils.ImageFileCacheUtils;
 
@@ -19,7 +24,7 @@ import com.android.volley.toolbox.ImageLoader.ImageCache;
  *
  * Created by Administrator on 2015/8/26:20:27.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
 
     public RequestQueue              mRequestQueue;
     protected ImageCache                mImageCache;

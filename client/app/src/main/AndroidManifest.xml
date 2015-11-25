@@ -101,7 +101,8 @@
         <activity
             android:name=".NewIsayActivity"
             android:label="@string/title_activity_newIsay"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

@@ -62,7 +62,7 @@ public class PictureActivity extends ToolbarActivity {
         ViewCompat.setTransitionName(mImageView, TRANSIT_PIC);
         Glide.with(this).load(mImageUrl).into(mImageView);
         // set up app bar
-        setAppBarAlpha(0.7f);
+        setAppBarAlpha(1.0f);
         setTitle(mImageTitle);
         setupPhotoAttacher();
     }
